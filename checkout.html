@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout - Clothes4Money</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="logo">Clothes4Money</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+</header>
+<main class="checkout">
+    <h1>Checkout</h1>
+    <form id="checkout-form">
+        <label>Name:<br><input type="text" required></label><br>
+        <label>Adresse:<br><input type="text" required></label><br>
+        <label>Bezahlmethode:<br>
+            <select>
+                <option>Kreditkarte</option>
+                <option>PayPal</option>
+            </select>
+        </label><br>
+        <button type="submit" class="btn-primary">Bestellung abschließen</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; 2024 Clothes4Money</p>
+</footer>
+<script src="script.js"></script>
+<script>
+document.getElementById('checkout-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    localStorage.removeItem('cart');
+    updateCartCount();
+    alert('Danke für deine Bestellung!');
+    window.location.href = 'index.html';
+});
+</script>
+</body>
+</html>
