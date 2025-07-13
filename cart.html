@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Warenkorb - Clothes4Money</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="logo">Clothes4Money</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+</header>
+<main class="cart">
+    <h1>Warenkorb</h1>
+    <ul id="cart-items"></ul>
+    <p id="total-price">Gesamt: 0 €</p>
+    <a href="checkout.html" class="btn-primary">Zur Kasse</a>
+</main>
+<footer>
+    <p>&copy; 2024 Clothes4Money</p>
+</footer>
+<script src="script.js"></script>
+<script>
+function loadCart() {
+    const items = JSON.parse(localStorage.getItem('cart') || '[]');
+    const list = document.getElementById('cart-items');
+    list.innerHTML = '';
+    let total = 0;
+    items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price.toFixed(2)}€`;
+        list.appendChild(li);
+        total += item.price;
+    });
+    document.getElementById('total-price').textContent = 'Gesamt: ' + total.toFixed(2) + ' €';
+    cart = items;
+    updateCartCount();
+}
+
+document.addEventListener('DOMContentLoaded', loadCart);
+</script>
+</body>
+</html>
